@@ -32,13 +32,44 @@ class AVLNode:
                 max_depth = max(max_depth, self.left.max_depth + 1)
             self.max_depth = max_depth
 
-        # Balance tree
+            # Balance tree
 
     def right_rotate(self, parent, child):
-        
+        """ 15
+           /
+          10
+         /   \
+        /     12
+      9     /   \
+          11    14
+
+
+        """
+        right = child.right
+        child.right = right.left
+        if parent.right == child:
+            parent.right = right
+        elif parent.left == child:
+            parent.left = right
+        right.left = child
 
     def left_rotate(self, parent, child):
-        pass
+        """
+            15
+            /
+         10
+        /  \
+    7      11
+  / \
+ 6   9
+      """
+        left = child.left
+        child.left = left.right
+        if parent.right == child:
+            parent.right = left
+        elif parent.left == child:
+            parent.left = child
+        left.right = child
 
     def find(self, node) -> AVLNode:
         pass
