@@ -32,9 +32,9 @@ class AVLNode:
                 max_depth = max(max_depth, self.left.max_depth + 1)
             self.max_depth = max_depth
 
-        # Balance tree
-        # TODO
-            
+            # Balance tree
+            # TODO
+
     def right_rotate(self, parent, child):
         """ 15
            /
@@ -72,7 +72,7 @@ class AVLNode:
             parent.left = child
         left.right = child
 
-    def find(self, node) -> AVLNode:
+    def find(self, node):
         pass
 
 
@@ -96,3 +96,13 @@ class AVLTree:
             # TODO
             return True
         return False
+
+
+def from_sorted_list_to_balanced_tree(array):
+    array_len = len(array)
+    parent = AVLNode(array[array_len // 2])
+    if array_len // 2 > 0:
+        parent.left = from_sorted_list_to_balanced_tree(array[:array_len // 2])
+    if array_len - (array_len // 2 + 1) > 0:
+        parent.right = from_sorted_list_to_balanced_tree(array[array_len // 2 + 1:])
+    return parent
