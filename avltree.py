@@ -32,8 +32,9 @@ class AVLNode:
                 max_depth = max(max_depth, self.left.max_depth + 1)
             self.max_depth = max_depth
 
-            # Balance tree
-
+        # Balance tree
+        # TODO
+            
     def right_rotate(self, parent, child):
         """ 15
            /
@@ -91,4 +92,7 @@ class AVLTree:
     def remove(self, value):
         # Check if node is empty
         # Remove value from the root node
-        pass
+        if self.root.find(value):
+            # TODO
+            return True
+        return False
